@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu May 24 21:58:25 2018
+
+@author: chenchacha
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+import getdata
+from six.moves import xrange
+
+X_train = getdata.X_train
+X_train_deskew = getdata.X_train_deskew
+X_test = getdata.X_test
+X_test_deskew = getdata.X_test_deskew
+y_test = getdata.y_test
+y_train = getdata.y_train
+
+num_examples=60000
+
+init_param = lambda shape: tf.random_normal(shape, dtype=tf.float32)
+
+with tf.name_scope("IO"):
+    inputs = tf.placeholder(tf.float32, [None, 2025], name="X")
+    targets = tf.placeholder(tf.float32, [None, 10], name="Yhat")
+    
+    
+with tf.name_scope("LogReg"):
+    W = tf.Variable(init_param([2025, 10]), name="W")
+    B = tf.Variable(init_param([10]))
+    logits = tf.matmul(inputs, W) + B
+    y = tf.nn.softmax(logits)
+    
+with tf.name_scope("train"):
+    learning_rate = tf.Variable(0.5, trainable=False)
+    cost_op = tf.nn.softmax_cross_entropy_with_logits(logits = logits, labels = targets)
+    cost_op = tf.reduce_mean(cost_op) 
+    train_op = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost_op)
+
+    correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(targets,1))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))*100
+
+tolerance = 1e-4
+epochs = 1
+last_cost = 0.0
+alpha = 0.5
+max_epochs = 10
+batch_size = 100
+costs = []
+sess = tf.Session()
+train_size = 60000
+
+with sess.as_default():
+    init = tf.global_variables_initializer()
+    sess.run(init)
+    sess.run(tf.assign(learning_rate, alpha))
+    writer = tf.summary.FileWriter("./tfboard", sess.graph)
+    while True:
+
+        num_batches = int(num_examples/batch_size)
+        cost=0
+        for step in xrange(num_batches):
+          # Compute the offset of the current minibatch in the data.
+          # Note that we could use better randomization across epochs.
+            offset = (step * batch_size) % (train_size - batch_size)
+            batch_xs = X_train[offset:(offset + batch_size), ...]
+            batch_ys = y_train[offset:(offset + batch_size)]
+#        for _ in range(num_batches):
+#            batch_xs, batch_ys = mnist.train.next_batch(batch_size)
+            tcost, _ = sess.run([cost_op, train_op], feed_dict={inputs: batch_xs, targets: batch_ys})
+            cost += tcost
+        cost /= num_batches
+
+        tcost = sess.run(cost_op, feed_dict={inputs: X_test, targets: y_test})
+        costs.append([cost, tcost])
+
+        if epochs%5==0:
+            acc = sess.run(accuracy, feed_dict={inputs: X_train, targets: y_train})
+            print ("Epoch: %d - Error: %.4f - Accuracy - %.2f%%" %(epochs, cost, acc))
+
+            if abs(last_cost - cost) < tolerance or epochs > max_epochs:
+                break
+
+            last_cost = cost
+
+        epochs += 1
+
+    tcost, taccuracy = sess.run([cost_op, accuracy], feed_dict={inputs: X_test, targets: y_test})
+    print ("Test Cost: %.4f - Accuracy: %.2f%% " %(tcost, taccuracy))
+    test_plot = sess.run(tf.argmax(y, 1), feed_dict = {inputs: X_test[:9]})
