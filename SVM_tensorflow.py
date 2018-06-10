@@ -128,19 +128,14 @@ X_test_deskew_reducedn = getdata.X_test_deskew_reducedn
 y_test = getdata.y_test_onehot
 y_train = getdata.y_train_onehot
 
+data = X_train_deskew_reducedn
+target = y_train
+test = X_test_deskew_reducedn
 
 if __name__ == '__main__':
     data = tf.placeholder(tf.float32, [None, 45, 45])
     target = tf.placeholder(tf.float32, [None, 1])
     svm_model = MultiSVC(training_epoch=5)
     svm_model.fit(data,target)
-    svm_model.pred(test)
+    print(svm_model.pred(test))
     
-
-
-    for epoch in range(10):
-        for _ in range(100):
-            batch = train.random_batch(10)
-            session.run(svm_model.fit(), {data: batch[0], target: batch[1]})
-        error = session.run(model.error, {data: test.data, target: test.target})
-        print('Epoch {:2d} error {:3.1f}%'.format(epoch + 1, 100 * error))
