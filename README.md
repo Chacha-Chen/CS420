@@ -8,9 +8,9 @@ Original  | 0.1337
 deskewed  | 0.6145
 deskewed + noise reduced  | 0.9194-->
 
-©Chacha Chen  
-©Yunyan Hong   
-©Yin Lin
+©[Chacha Chen](baidu.com)  
+©[Yunyan Hong](https://github.com/hongyunyan)   
+©[Yin Lin](https://github.com/niceIrene)
 
 - Data Preprocessing
 	- image deskewing 
