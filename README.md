@@ -12,18 +12,18 @@
 	- image deskewing 
 	- noise reduction
 - Classical Learning Method:
- 	 - Softmax, kNN, SVM, Random forest, Xgboost- Neural Networks:
-	-  MLP, CNN, RNN, LSTM- Unsupervise Learning:
+ 	 - Softmax, kNN, SVM, Random forest, Xgboost
+- Neural Networks:
+	-  MLP, CNN, RNN, LSTM
+- Unsupervise Learning:
 	-  PCA , Autoencoder, k-Means
 
 
 ## Data Preprocessing
 
 
-<img src="./figures/originalimage.png" alt="drawing" width="200px"/>
-<img src="./figures/deskewimage.png" alt="drawing" width="200px"/>
-<img src="./figures/rednim.png" alt="drawing" width="200px"/>
-<img src="./figures/noisereduction.png" alt="drawing" width="200px"/>
+<img src="./figures/originalimage.png" alt="drawing" width="200px"/><img src="./figures/deskewimage.png" alt="drawing" width="200px"/>
+<img src="./figures/rednim.png" alt="drawing" width="200px"/><img src="./figures/noisereduction.png" alt="drawing" width="200px"/>
 
 - The original polluted digits  
 - Image deskewing 
