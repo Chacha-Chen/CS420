@@ -30,6 +30,12 @@
 - Noise Reduction
 - Image deskewing + Noise reduction  
 
+Data Preprocessing  | Accuracy
+------------- | -------------
+Original  | 0.1337
+deskewed  | 0.6145
+deskewed + noise reduced  | 0.9194
+
 ## Classical Models
 
 <img src="./figures/final.png" alt="drawing" width="200px"/>
@@ -63,11 +69,7 @@ stochastic gradient descent accuracy with deskewed + reduced noise +standard:  0
 	
 	
 	
-Data Preprocessing  | Accuracy
-------------- | -------------
-Original  | 0.1337
-deskewed  | 0.6145
-deskewed + noise reduced  | 0.9194
+
 
 <!--##  softmax
 ### learning rate = 10
