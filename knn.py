@@ -22,41 +22,11 @@ X_test_deskew_reducedn = getdata.X_test_deskew_reducedn
 y_train = np.fromfile("data/label_train",dtype=np.uint8)    
 y_test = np.fromfile("data/label_test",dtype=np.uint8)
 
-# x_train = x_train.reshape((x_train.shape[0], -1))
-# x_test = x_test.reshape((x_test.shape[0], -1))
-
-# def one_hot(Y,length):
-#     NewY=[]
-#     for i in range(len(Y)):
-#         content=[]
-#         num = int(Y[i])
-#         for i in range(num):
-#             content.append(0)
-#         content.append(1)
-#         for i in range(num+1,length):
-#             content.append(0)
-#         NewY.append(content)
-#     return np.array(NewY)
-
-# y_test=one_hot(y_test,10)
-# y_train=one_hot(y_train,10)
-
-# tf Graph Input
-#xtr = tf.placeholder("float", [None, 2025])
-#xte = tf.placeholder("float", [2025])
-
-#ytr = tf.placeholder(tf.float32, [None, CLASSES])
 sess = tf.Session()
 
 np.random.seed(25)  # set seed for reproducibility
 train_size = 60000
 test_size = 10000
-#rand_train_indices = np.random.choice(60000, train_size, replace=False)
-#rand_test_indices = np.random.choice(10000, test_size, replace=False)
-#x_vals_train = x_train[rand_train_indices]
-#x_vals_test = x_test[rand_test_indices]
-#y_vals_train = y_train[rand_train_indices]
-#y_vals_test = y_test[rand_test_indices]
 x_vals_train = X_train
 x_vals_test = X_test
 y_vals_train = y_train

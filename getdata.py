@@ -1,6 +1,7 @@
 import pickle
 import numpy as np
 from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
 
 
 data_num = 60000 #The number of figures
@@ -24,8 +25,8 @@ with open('data/data_train.pkl', 'rb') as f:
 with open('data/data_test.pkl', 'rb') as f:
     X_test_deskew = pickle.load(f)
     
-# y_train = np.fromfile("data/label_train",dtype=np.uint8)    
-# y_test = np.fromfile("data/label_test",dtype=np.uint8)
+y_train = np.fromfile("data/label_train",dtype=np.uint8)    
+y_test = np.fromfile("data/label_test",dtype=np.uint8)
     
 with open('data/data_train_reducedn.pkl', 'rb') as f:
     X_train_deskew_reducedn = pickle.load(f)
@@ -80,20 +81,3 @@ scaler = StandardScaler()
 scaler.fit(X_test_deskew_reducedn)
 X_test_deskew_reducedn_standard=scaler.transform(X_test_deskew_reducedn)
 
-#max = X_train_deskew_reducedn.max()
-#min = X_train_deskew_reducedn.min()
-#shred = min + 0.1*(max - min)
-#X_train_deskew_reducednt = np.zeros(shape=(60000,45,45))
-#
-#for k in range(60000):
-#    for i in range(45):
-#        for j in range(45):
-#            if(X_train_deskew_reducedn[k][i,j] < shred ):
-#                X_train_deskew_reducednt[k][i,j] = 0
-#            else:
-#                X_train_deskew_reducednt[k][i,j] = 1
-
-#(array([23832, 39794]),) is empty
-
-
-#index = ~(X_train.any(axis=1)).any(axis=1)

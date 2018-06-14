@@ -69,23 +69,6 @@ for i in range(60000):
 for i in range(10000):
     nd_data_test[i]=morphology.remove_small_objects(data_bool_test[i],min_size=16,connectivity=1)
 
-# fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-
-# for i in range(10):
-#     for j in range(10):
-#         index=i*10+j
-#         axes[i][j].imshow(data[index], interpolation='none')
-#         axes[i][j].set_xticks([])
-#         axes[i][j].set_yticks([])
-
-# fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-
-# for i in range(10):
-#     for j in range(10):
-#         index=i*10+j
-#         axes[i][j].imshow(nd_data[index], interpolation='none')
-#         axes[i][j].set_xticks([])
-#         axes[i][j].set_yticks([])
     
 nd_data_deskew=np.zeros(shape=(60000,45,45))
 nd_data_deskew_test = np.zeros(shape=(10000,45,45))
@@ -103,64 +86,6 @@ output.close()
 output = open('./data/data_test_reducedn.pkl', 'wb')
 pickle.dump(nd_data_deskew_test,output)
 output.close()
-
-
-#little test
-
-# testdata = data[:200,...]
-
-# fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-
-# for i in range(10):
-#     for j in range(10):
-#         index=i*10+j
-#         axes[i][j].imshow(testdata[index], interpolation='none')
-#         axes[i][j].set_xticks([])
-#         axes[i][j].set_yticks([])
-
-
-# for k in range(200):
-#     for i in range(45):
-#         for j in range(45):
-#             if (testdata[k][i,j]<=0.4*255):
-#                 testdata[k][i,j]=0
-#             else:
-#                 testdata[k][i,j]=1
-                
-# fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-# for i in range(10):
-#     for j in range(10):
-#         index=i*10+j
-#         axes[i][j].imshow(testdata[index], interpolation='none')
-#         axes[i][j].set_xticks([])
-#         axes[i][j].set_yticks([])
-                
-# testdata_bool = testdata.astype('bool')
-# nd_testdata=np.zeros(shape=(200,45,45))
-
-# for i in range(200):
-#     nd_testdata[i]=morphology.remove_small_objects(testdata_bool[i],min_size=16,connectivity=1)
-
-# fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-# for i in range(10):
-#     for j in range(10):
-#         index=i*10+j
-#         axes[i][j].imshow(nd_testdata[index], interpolation='none')
-#         axes[i][j].set_xticks([])
-#         axes[i][j].set_yticks([])
-
-# nd_testdata_deskew=np.zeros(shape=(200,45,45))
-
-#for i in range(0,200):
-#    nd_data_deskew[i]=deskew(nd_data_deskew[i])
-    
-fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-for i in range(10):
-    for j in range(10):
-        index=i*10+j
-        axes[i][j].imshow(nd_data_deskew[index], interpolation='none')
-        axes[i][j].set_xticks([])
-        axes[i][j].set_yticks([])
 
 
 

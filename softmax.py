@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+e你#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jun  7 23:20:33 2018
@@ -7,26 +7,11 @@ Created on Thu Jun  7 23:20:33 2018
 """
 
 import tensorflow as tf
-#import pickle
-#import numpy as np
 import getdata
 from six.moves import xrange
 from sklearn.preprocessing import StandardScaler
 
-#data = [[0, 0], [0, 0], [1, 1], [1, 1]]
-#>>> scaler = StandardScaler()
-#>>> print(scaler.fit(data))
-#StandardScaler(copy=True, with_mean=True, with_std=True)
-#>>> print(scaler.mean_)
-#[ 0.5  0.5]
-#>>> print(scaler.transform(data))
 
-#IMAGE_SIZE = 45
-#NUM_CHANNELS = 1
-#PIXEL_DEPTH = 255
-#NUM_LABELS = 10
-#VALIDATION_SIZE = 5000  # Size of the validation set.
-#SEED = 66478  # Set to None for random seed.
 BATCH_SIZE = 64
 NUM_EPOCHS = 100
 #EVAL_BATCH_SIZE = 64
@@ -249,51 +234,4 @@ with tf.Session() as sess:
         writer.add_summary(summary, global_step=step)
     #在测试集上验证模型准确率
     print("Accuracy (deskewd+reduced noise+standard): %.4f" % sess.run(evaluate,feed_dict={X: X_test_deskew_reducedn_standard,y_: y_test}))
-#    batch_image = X_test_deskew_reducedn_standard.reshape(10000,45,45)
-    #matches = predictions == tf.argmax(y_test)
-# later
-#batch_matches = sess.run(matches, feed_dict={...})
-#    from skimage import io
-#    batch_matches = sess.run(correct_prediction,feed_dict={X: X_test_deskew_reducedn_standard,y_: y_test})
-#    for image, does_match in zip(batch_image, batch_matches):
-#      if not does_match:
-#        io.imshow(image)
 
-
-#import numpy as np 
-#import matplotlib.pyplot as plt
-#index = 0
-#misclassifiedIndexes = []
-#for label, predict in zip(y_test, predictions):
-# if label != predict: 
-#  misclassifiedIndexes.append(index)
-#  index +=1
-
-# computation graph
-    
-#predictions = argmax(softmax(final_layer))
-#matches = predictions == argmax(labels) # if one-hot encoded
-#batch_image = X_test_deskew_reducedn_standard.reshape(10000,45,45)
-## later
-##batch_matches = sess.run(matches, feed_dict={...})
-#from skimage import io
-#batch_matches = sess.run(evaluate,feed_dict={X: X_test_deskew_reducedn_standard,y_: y_test})
-#for image, does_match in zip(batch_image, batch_matches):
-#  if not does_match:
-#    io.imshow(image)
-
-#for step in xrange(int(num_epochs * train_size) // BATCH_SIZE):
-#      # Compute the offset of the current minibatch in the data.
-#      # Note that we could use better randomization across epochs.
-#      offset = (step * BATCH_SIZE) % (train_size - BATCH_SIZE)
-#      batch_data = X_train[offset:(offset + BATCH_SIZE), ...]
-#      batch_labels = y_train[offset:(offset + BATCH_SIZE)]
-#
-#fig, axes = plt.subplots(10, 10, figsize=(10, 10))
-#
-#for i in range(10):
-#    for j in range(10):
-#        index=i*10+j
-#        axes[i][j].imshow(deskewed_data[index], cmap='gray_r', interpolation='nearest')
-#        axes[i][j].set_xticks([])
-#        axes[i][j].set_yticks([])
