@@ -164,3 +164,25 @@ number of examples. To be clear, one pass = one forward pass + one backward pass
 
 Example: if you have 1000 training examples, and your batch size is 500, then it will take 2 iterations to complete 1 epoch.-->
 
+## unsupervised learning
+### auto encoder (AE)
+<img src="./figures/20-sparse.png" alt="drawing" width="300px"/><img src="./figures/pcaa.png" alt="drawing" width="300px"/>
+- The dimension reduction result of AE  
+- The dimension reduction result of PCA
+
+### dimension reduction + SVM result
+|      | AE(2D) | PCA(2D |
+| :--- | :----: | ----:  |
+| ACC  | 0.89   | 0.14   |
+|Recall| 0.89   | 0.15   |
+ 
+### auto encoder for data preprocessing result
+| 45*45 original features | 45 *45 original features + 64ae| 64ae  |  
+| ------------- |:-------------:| -----:|
+| 0.87         |0.89           | 0.70  |
+| 0.97        | 0.96          |   0.86|
+| 0.89       | 0.87          |  0.79 |
+
+### decode result of AE
+<img src="./figures/conv.png" alt="drawing" width="400px"/>
+
