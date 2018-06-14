@@ -1,12 +1,26 @@
-# CS420
-course project
+# CS420 Course Project
+
+## An Exploratory Study on MNIST dataset
+
 <!--Data Preprocessing  | Accuracy
 ------------- | -------------
 Original  | 0.1337
 deskewed  | 0.6145
 deskewed + noise reduced  | 0.9194-->
 
-##  softmax
+©Chacha Chen  
+©Yunyan Hong   
+©Yin Lin
+
+- Data Preprocessing
+	- image deskewing 
+	- noise reduction
+- Classical Learning Method:
+ 	 - Softmax, kNN, SVM, Random forest, Xgboost- Neural Networks:
+	-  MLP, CNN, RNN, LSTM- Unsupervise Learning:
+	-  PCA , Autoencoder, k-Means
+
+<!--##  softmax
 ### learning rate = 10
 Accuracy: 0.1497  
 Accuracy (deskewd): 0.6219  
@@ -85,7 +99,7 @@ stochastic gradient descent accuracy with deskewed + reduced noise +standard:  0
 
 
 
-
+-->
 
 <!--
 one epoch = one forward pass and one backward pass of all the training examples
