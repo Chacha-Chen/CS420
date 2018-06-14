@@ -166,7 +166,7 @@ Example: if you have 1000 training examples, and your batch size is 500, then it
 
 ## unsupervised learning
 ### auto encoder (AE)
-<img src="./figures/20-sparse.png" alt="drawing" width="300px"/><img src="./figures/pcaa.png" alt="drawing" width="300px"/>
+<img src="./figures/20-sparse.png" alt="drawing" width="300px"/><img src="./figures/PCA.png" alt="drawing" width="300px"/>
 - The dimension reduction result of AE  
 - The dimension reduction result of PCA
 
