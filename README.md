@@ -2,11 +2,7 @@
 
 ## An Exploratory Study on MNIST dataset
 
-<!--Data Preprocessing  | Accuracy
-------------- | -------------
-Original  | 0.1337
-deskewed  | 0.6145
-deskewed + noise reduced  | 0.9194-->
+
 
 ©[Chacha Chen](baidu.com)  
 ©[Yunyan Hong](https://github.com/hongyunyan)   
@@ -19,6 +15,59 @@ deskewed + noise reduced  | 0.9194-->
  	 - Softmax, kNN, SVM, Random forest, Xgboost- Neural Networks:
 	-  MLP, CNN, RNN, LSTM- Unsupervise Learning:
 	-  PCA , Autoencoder, k-Means
+
+
+## Data Preprocessing
+
+
+<img src="./figures/originalimage.png" alt="drawing" width="200px"/>
+<img src="./figures/deskewimage.png" alt="drawing" width="200px"/>
+<img src="./figures/rednim.png" alt="drawing" width="200px"/>
+<img src="./figures/noisereduction.png" alt="drawing" width="200px"/>
+
+- The original polluted digits  
+- Image deskewing 
+- Noise Reduction
+- Image deskewing + Noise reduction  
+
+## Classical Models
+
+<img src="./figures/final.png" alt="drawing" width="200px"/>
+
+### Softmax with learning rate = 0.01
+Accuracy: 0.1370  
+Accuracy (standard): 0.2559  
+Accuracy (deskewd): 0.6401  
+Accuracy (deskewd + standard): 0.7170  
+Accuracy (deskewd+reduced noise): 0.9113  
+Accuracy (deskewd+reduced noise+standard): 0.9198  
+Accuracy (deskewd+reduced noise+standard+pca): 0.9199
+
+### Random Forest
+random forest accuracy:  0.6919  
+random forest accuracy (standard):  0.6465  
+random forest accuracy with dekewed data:  0.8292  
+random forest accuracy with dekewed+standard data:  0.8344  
+random forest accuracy with dekewed + reduced noise data:  0.9532  
+random forest accuracy with dekewed+ reduced noise + standard data:  0.5347
+
+### linear SVM with SGD
+stochastic gradient descent accuracy:  0.1359   
+stochastic gradient descent accuracy with standard data:  0.2186   
+stochastic gradient descent accuracy with deskewed data:  0.5942   
+stochastic gradient descent accuracy with deskewed + standard data:  0.7171   
+stochastic gradient descent accuracy with deskewed + reduced noise :  0.904   
+stochastic gradient descent accuracy with deskewed + reduced noise +standard:  0.9081
+
+
+	
+	
+	
+Data Preprocessing  | Accuracy
+------------- | -------------
+Original  | 0.1337
+deskewed  | 0.6145
+deskewed + noise reduced  | 0.9194
 
 <!--##  softmax
 ### learning rate = 10
@@ -99,7 +148,7 @@ stochastic gradient descent accuracy with deskewed + reduced noise +standard:  0
 
 
 
--->
+
 
 <!--
 one epoch = one forward pass and one backward pass of all the training examples
