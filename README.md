@@ -25,21 +25,32 @@
 
 ```
 cd dataset
-./getdata.sh
+./get_data.sh
 ```
 This will automatically download MNIST data from [http://cmach.sjtu.edu.cn/course/cs420/projects/mnist.zip](http://cmach.sjtu.edu.cn/course/cs420/projects/mnist.zip)
+and proprocessing the dataset, both deskewing and denoising, resulting in 6 dataset files in the dataset directory.
 
 ```
 cd ..
-python 
+python [technique_name]/[model_name].py
 ```
 
+```
+technique_name options:  classical_models,  NN_models
+```
 
-+ NN models file
+```
+model_name options:
+
+if classical_models: 	  softmax, knn, cos_knn, randomforest, xg_boost, SVM
+
+if NN_models: 	 
   + CNN:  python keras_cnn.py -f=0 -n=30000 (-f 对应选择数据集，可选择0,1,2三个值，代表三个数据集，-n 对应训练的数据量，可以省略默认60000,下面均相同)
   + MLP:  python keras_MLP.py -f=0
   + RNN:  python keras_rnn.py -f=0
   + LSTM:  python keras_lstm.py -f=0
+ ```
+
 
 ## Data Preprocessing
 
