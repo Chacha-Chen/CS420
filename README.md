@@ -36,11 +36,11 @@ python [technique_name]/[model_name].py
 ```
 
 ```
-technique_name options:  classical_models,  NN_models
+[technique_name] options:  classical_models,  NN_models
 ```
 
 ```
-model_name options:
+[model_name] options:
 
 if classical_models: 	  softmax, knn, cos_knn, randomforest, xg_boost, SVM
 
