@@ -2,11 +2,7 @@
 
 ## An Exploratory Study on MNIST dataset
 
-
-
-©[Chacha Chen](baidu.com)  
-©[Yunyan Hong](https://github.com/hongyunyan)   
-©[Yin Lin](https://github.com/niceIrene)
+@[Chacha Chen](https://github.com/chacha-chen), @[Yunyan Hong](https://github.com/hongyunyan), @[Yin Lin](https://github.com/niceIrene)
 
 - Data Preprocessing
   - image deskewing 
