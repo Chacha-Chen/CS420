@@ -33,8 +33,8 @@ def deskew(image):
 data_num = 60000 #The number of figures
 fig_w = 45       #width of each figure
 
-data = np.fromfile("./data/mnist_train_data",dtype=np.uint8)
-data_test = np.fromfile("./data/mnist_test_data",dtype=np.uint8)
+data = np.fromfile("mnist_train_data",dtype=np.uint8)
+data_test = np.fromfile("mnist_test_data",dtype=np.uint8)
 
 data = data.reshape(data_num,fig_w,fig_w)
 data_test = data_test.reshape(10000,45,45)
@@ -79,11 +79,11 @@ for i in range(0,10000):
     nd_data_deskew_test[i]=deskew(nd_data_test[i])    
         
 import pickle 
-output = open('./data/data_train_reducedn.pkl', 'wb')
+output = open('mnist_train_data_denoised.pkl', 'wb')
 pickle.dump(nd_data_deskew,output)
 output.close()
 
-output = open('./data/data_test_reducedn.pkl', 'wb')
+output = open('mnist_test_data_denoised.pkl', 'wb')
 pickle.dump(nd_data_deskew_test,output)
 output.close()
 

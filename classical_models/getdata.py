@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 data_num = 60000 #The number of figures
 fig_w = 45       #width of each figure
 
-X_train = np.fromfile("./data/mnist_train_data",dtype=np.uint8)
-y_train = np.fromfile("./data/label_train",dtype=np.uint8)
-X_test = np.fromfile("./data/mnist_test_data",dtype=np.uint8)
-y_test = np.fromfile("./data/label_test",dtype=np.uint8)
+X_train = np.fromfile("./dataset/mnist_train_data",dtype=np.uint8)
+y_train = np.fromfile("./dataset/mnist_train_label",dtype=np.uint8)
+X_test = np.fromfile("./dataset/mnist_test_data",dtype=np.uint8)
+y_test = np.fromfile("./dataset/mnist_test_label",dtype=np.uint8)
 
 X_train = X_train.reshape(data_num,fig_w,fig_w)
 X_test = X_test.reshape(10000,fig_w,fig_w)
@@ -19,19 +19,19 @@ X_train = X_train.reshape((X_train.shape[0], -1))
 X_test = X_test.reshape((X_test.shape[0], -1))
 
 #load data
-with open('data/data_train.pkl', 'rb') as f:
+with open('./dataset/mnist_train_data_deskewed.pkl', 'rb') as f:
     X_train_deskew = pickle.load(f)
     
-with open('data/data_test.pkl', 'rb') as f:
+with open('./dataset/mnist_test_data_deskewed.pkl', 'rb') as f:
     X_test_deskew = pickle.load(f)
     
-y_train = np.fromfile("data/label_train",dtype=np.uint8)    
-y_test = np.fromfile("data/label_test",dtype=np.uint8)
+y_train = np.fromfile("./dataset/mnist_train_label",dtype=np.uint8)    
+y_test = np.fromfile("./dataset/mnist_test_label",dtype=np.uint8)
     
-with open('data/data_train_reducedn.pkl', 'rb') as f:
+with open('./dataset/mnist_train_data_denoised.pkl', 'rb') as f:
     X_train_deskew_reducedn = pickle.load(f)
     
-with open('data/data_test_reducedn.pkl', 'rb') as f:
+with open('./dataset/mnist_test_data_denoised.pkl', 'rb') as f:
     X_test_deskew_reducedn = pickle.load(f)
 
 X_train_deskew = X_train_deskew.reshape((X_train_deskew.shape[0], -1))

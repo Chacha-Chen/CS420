@@ -21,6 +21,20 @@
 
 ## Usage
 
+- Proprecessing
+
+```
+cd dataset
+./getdata.sh
+```
+This will automatically download MNIST data from [http://cmach.sjtu.edu.cn/course/cs420/projects/mnist.zip](http://cmach.sjtu.edu.cn/course/cs420/projects/mnist.zip)
+
+```
+cd ..
+python 
+```
+
+
 + NN models file
   + CNN:  python keras_cnn.py -f=0 -n=30000 (-f 对应选择数据集，可选择0,1,2三个值，代表三个数据集，-n 对应训练的数据量，可以省略默认60000,下面均相同)
   + MLP:  python keras_MLP.py -f=0

@@ -104,7 +104,7 @@ X_test_deskew_reducedn_standard=getdata.X_test_deskew_reducedn_standard
 
 
 ###  linear svm with SGD
-
+print('linear svm with SGD')
 
 clf_sgd = SGDClassifier()
 clf_sgd.fit(X_train, y_train)
@@ -142,7 +142,7 @@ y_pred_sgd = clf_sgd.predict(X_test_deskew_reducedn_standard)
 acc_sgd = accuracy_score(y_test, y_pred_sgd)
 print("accuracy with deskewed + reduced noise +standard: ",acc_sgd)
 
-
+print('linear svm')
 ## linear SVM
 clf_svm = LinearSVC()
 clf_svm.fit(X_train, y_train)
@@ -185,61 +185,62 @@ print("accuracy with deskewed + reduced noise +standard: ",acc_svm)
 
 ##SVM with rbf kernel
 
+print('SVM with RBF kernel is super slow(about an hour), so it is commented. Uncomment code below if needed.')
 
-from sklearn.model_selection import GridSearchCV
+# from sklearn.model_selection import GridSearchCV
 
-# generate matrix with all gammas
-# [ [10^-4, 2*10^-4, 5*10^-4], 
-#   [10^-3, 2*10^-3, 5*10^-3],
-#   ......
-#   [10^3, 2*10^3, 5*10^3] ]
-gamma_range = np.outer(np.logspace(-3, 0, 4),np.array([1,5]))
-gamma_range = gamma_range.flatten()
+# # generate matrix with all gammas
+# # [ [10^-4, 2*10^-4, 5*10^-4], 
+# #   [10^-3, 2*10^-3, 5*10^-3],
+# #   ......
+# #   [10^3, 2*10^3, 5*10^3] ]
+# gamma_range = np.outer(np.logspace(-3, 0, 4),np.array([1,5]))
+# gamma_range = gamma_range.flatten()
 
-# generate matrix with all C
-C_range = np.outer(np.logspace(-1, 1, 3),np.array([1,5]))
-# flatten matrix, change to 1D numpy array
-C_range = C_range.flatten()
+# # generate matrix with all C
+# C_range = np.outer(np.logspace(-1, 1, 3),np.array([1,5]))
+# # flatten matrix, change to 1D numpy array
+# C_range = C_range.flatten()
 
-parameters = {'kernel':['rbf'], 'C':C_range, 'gamma': gamma_range}
+# parameters = {'kernel':['rbf'], 'C':C_range, 'gamma': gamma_range}
 
-svm_clsf = svm.SVC()
-grid_clsf = GridSearchCV(estimator=svm_clsf,param_grid=parameters,n_jobs=1, verbose=2)
-
-
-start_time = dt.datetime.now()
-print('Start param searching at {}'.format(str(start_time)))
-
-grid_clsf.fit(X_train_deskew_reducedn_standard, y_train)
-
-elapsed_time= dt.datetime.now() - start_time
-print('Elapsed time, param searching {}'.format(str(elapsed_time)))
-sorted(grid_clsf.cv_results_.keys())
-
-classifier = grid_clsf.best_estimator_
-params = grid_clsf.best_params_
+# svm_clsf = svm.SVC()
+# grid_clsf = GridSearchCV(estimator=svm_clsf,param_grid=parameters,n_jobs=1, verbose=2)
 
 
+# start_time = dt.datetime.now()
+# print('Start param searching at {}'.format(str(start_time)))
 
-scores = grid_clsf.cv_results_['mean_test_score'].reshape(len(C_range),
-                                                     len(gamma_range))
+# grid_clsf.fit(X_train_deskew_reducedn_standard, y_train)
 
-plot_param_space_scores(scores, C_range, gamma_range)
+# elapsed_time= dt.datetime.now() - start_time
+# print('Elapsed time, param searching {}'.format(str(elapsed_time)))
+# sorted(grid_clsf.cv_results_.keys())
+
+# classifier = grid_clsf.best_estimator_
+# params = grid_clsf.best_params_
+
+
+
+# scores = grid_clsf.cv_results_['mean_test_score'].reshape(len(C_range),
+#                                                      len(gamma_range))
+
+# plot_param_space_scores(scores, C_range, gamma_range)
 
 
 
 # Now predict the value of the test
-expected = y_test
-predicted = classifier.predict(X_test_deskew_reducedn_standard)
+# expected = y_test
+# predicted = classifier.predict(X_test_deskew_reducedn_standard)
 
-show_some_digits(X_test_deskew_reducedn_standard,predicted,title_text="Predicted {}")
+# show_some_digits(X_test_deskew_reducedn_standard,predicted,title_text="Predicted {}")
 
-print("Classification report for classifier %s:\n%s\n"
-      % (classifier, metrics.classification_report(expected, predicted)))
+# print("Classification report for classifier %s:\n%s\n"
+#       % (classifier, metrics.classification_report(expected, predicted)))
       
-cm = metrics.confusion_matrix(expected, predicted)
-print("Confusion matrix:\n%s" % cm)
+# cm = metrics.confusion_matrix(expected, predicted)
+# print("Confusion matrix:\n%s" % cm)
 
-plot_confusion_matrix(cm)
+# plot_confusion_matrix(cm)
 
-print("Accuracy={}".format(metrics.accuracy_score(expected, predicted)))
+# print("Accuracy={}".format(metrics.accuracy_score(expected, predicted)))

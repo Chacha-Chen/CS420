@@ -9,8 +9,7 @@ import pickle
 import numpy as np
 import tensorflow as tf
 import getdata
-
-
+print('knn begin!')
 
 X_train = getdata.X_train
 X_train_deskew = getdata.X_train_deskew
@@ -19,8 +18,8 @@ X_test_deskew = getdata.X_test_deskew
 X_train_deskew_reducedn = getdata.X_train_deskew_reducedn
 X_test_deskew_reducedn = getdata.X_test_deskew_reducedn
     
-y_train = np.fromfile("data/label_train",dtype=np.uint8)    
-y_test = np.fromfile("data/label_test",dtype=np.uint8)
+y_train = np.fromfile("./dataset/mnist_train_label",dtype=np.uint8)    
+y_test = np.fromfile("./dataset/mnist_test_label",dtype=np.uint8)
 
 sess = tf.Session()
 

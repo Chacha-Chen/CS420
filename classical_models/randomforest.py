@@ -10,8 +10,8 @@ from sklearn.metrics import accuracy_score
 import timeit
 import getdata
 
-y_train = np.fromfile("./data/label_train",dtype=np.uint8)
-y_test = np.fromfile("./data/label_test",dtype=np.uint8)
+y_train = np.fromfile("./dataset/mnist_train_label",dtype=np.uint8)
+y_test = np.fromfile("./dataset/mnist_test_label",dtype=np.uint8)
 
 X_train = getdata.X_train
 X_train_deskew = getdata.X_train_deskew
@@ -35,7 +35,7 @@ clf_rf = RandomForestClassifier()
 clf_rf.fit(X_train, y_train)
 y_pred_rf = clf_rf.predict(X_test)
 acc_rf = accuracy_score(y_test, y_pred_rf)
-print( "random forest accuracy: ",acc_rf)
+print( "random forest accuracy (original dataset): ",acc_rf)
 
 clf_rf = RandomForestClassifier()
 clf_rf.fit(X_train_standard, y_train)

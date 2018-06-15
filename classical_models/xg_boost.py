@@ -16,7 +16,7 @@ import pickle
 
 print(__doc__)
 
-with open('data/data_train.pkl', 'rb') as f:
+with open('dataset/mnist_train_data.pkl', 'rb') as f:
     X_main_std = pickle.load(f)
 
 
@@ -25,8 +25,8 @@ with open('data/data_train.pkl', 'rb') as f:
 #    X_test_deskew_reducedn = pickle.load(f)
 
 #X_main_std = np.fromfile("./data/mnist_train_data",dtype=np.uint8)
-y_main = np.fromfile("./data/label_train",dtype=np.uint8)
-y_test = np.fromfile("./data/label_test",dtype=np.uint8)
+y_main = np.fromfile("./dataset/mnist_train_label",dtype=np.uint8)
+y_test = np.fromfile("./dataset/mnist_test_label",dtype=np.uint8)
 X_main_std = X_main_std.reshape(60000,2025)
 
 print(X_main_std.shape)

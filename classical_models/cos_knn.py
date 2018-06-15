@@ -14,10 +14,10 @@ from sklearn import datasets, model_selection
 from sklearn.metrics import classification_report
 import getdata
 
-
-y_train = np.fromfile("./data/label_train",dtype=np.uint8)
+print('cos-kNN begin!')
+y_train = np.fromfile("./dataset/mnist_train_label",dtype=np.uint8)
 #target = y_train
-y_test = np.fromfile("./data/label_test",dtype=np.uint8)
+y_test = np.fromfile("./dataset/mnist_test_label",dtype=np.uint8)
 
 
 
