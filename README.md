@@ -231,3 +231,5 @@ Example: if you have 1000 training examples, and your batch size is 500, then it
 ### decode result of AE
 <img src="./figures/conv.png" alt="drawing" width="400px"/>
 
+### K-Means
+<img src="./figures/avg.png" alt="drawing" width="400px"/> 
