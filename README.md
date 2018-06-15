@@ -66,9 +66,6 @@ stochastic gradient descent accuracy with deskewed + reduced noise :  0.904
 stochastic gradient descent accuracy with deskewed + reduced noise +standard:  0.9081
 
 
-	
-	
-	
 
 
 <!--##  softmax
